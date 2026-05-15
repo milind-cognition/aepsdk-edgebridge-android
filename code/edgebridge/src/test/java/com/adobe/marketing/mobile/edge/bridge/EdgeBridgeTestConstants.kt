@@ -9,26 +9,18 @@
   governing permissions and limitations under the License.
 */
 
-package com.adobe.marketing.mobile.edge.bridge;
+package com.adobe.marketing.mobile.edge.bridge
 
-public class EdgeBridgeTestConstants {
+internal object EdgeBridgeTestConstants {
 
-	private EdgeBridgeTestConstants() {}
+    const val EXTENSION_NAME = "com.adobe.edge.bridge"
+    const val EXTENSION_FRIENDLY_NAME = "Edge Bridge"
 
-	static final String EXTENSION_NAME = "com.adobe.edge.bridge";
-	static final String EXTENSION_FRIENDLY_NAME = "Edge Bridge";
+    object EventNames {
+        const val EDGE_BRIDGE_REQUEST = "Edge Bridge Request"
+    }
 
-	final class EventNames {
-
-		static final String EDGE_BRIDGE_REQUEST = "Edge Bridge Request";
-
-		private EventNames() {}
-	}
-
-	final class JsonValues {
-
-		static final String EVENT_TYPE = "analytics.track";
-
-		private JsonValues() {}
-	}
+    object JsonValues {
+        const val EVENT_TYPE = "analytics.track"
+    }
 }
