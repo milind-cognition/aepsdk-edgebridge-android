@@ -41,7 +41,7 @@ internal object EdgeBridgeProperties {
             return EdgeBridgeConstants.AnalyticsValues.APP_STATE_FOREGROUND
         }
 
-        val appState = appContextService.appState
+        val appState: AppState? = appContextService.appState
         return if (appState == AppState.BACKGROUND) {
             EdgeBridgeConstants.AnalyticsValues.APP_STATE_BACKGROUND
         } else {
