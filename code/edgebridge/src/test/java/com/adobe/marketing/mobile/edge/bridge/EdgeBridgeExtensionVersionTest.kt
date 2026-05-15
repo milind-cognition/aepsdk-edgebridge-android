@@ -11,13 +11,13 @@
 
 package com.adobe.marketing.mobile.edge.bridge
 
-import java.io.FileInputStream
-import java.io.IOException
-import java.util.Properties
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
 import org.junit.Test
+import java.io.FileInputStream
+import java.io.IOException
+import java.util.Properties
 
 class EdgeBridgeExtensionVersionTest {
 

@@ -15,11 +15,6 @@ import android.app.Application
 import android.content.Context
 import com.adobe.marketing.mobile.Extension
 import com.adobe.marketing.mobile.MobileCore
-import java.io.FileInputStream
-import java.io.IOException
-import java.util.Properties
-import java.util.concurrent.CountDownLatch
-import java.util.concurrent.TimeUnit
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
@@ -30,6 +25,11 @@ import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
+import java.io.FileInputStream
+import java.io.IOException
+import java.util.Properties
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit
 
 @RunWith(MockitoJUnitRunner::class)
 class EdgeBridgeTest {

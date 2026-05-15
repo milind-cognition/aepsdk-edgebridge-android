@@ -21,6 +21,7 @@ import com.adobe.marketing.mobile.services.Log
 import com.adobe.marketing.mobile.util.CloneFailedException
 import com.adobe.marketing.mobile.util.DataReader
 import com.adobe.marketing.mobile.util.EventDataUtils
+import com.adobe.marketing.mobile.util.StringUtils
 import com.adobe.marketing.mobile.util.TimeUtils
 import java.util.Date
 
@@ -30,13 +31,13 @@ internal class EdgeBridgeExtension(extensionApi: ExtensionApi) : Extension(exten
         private const val LOG_SOURCE = "EdgeBridgeExtension"
     }
 
-    override fun getName(): String = EdgeBridgeConstants.EXTENSION_NAME
+    public override fun getName(): String = EdgeBridgeConstants.EXTENSION_NAME
 
-    override fun getFriendlyName(): String = EdgeBridgeConstants.FRIENDLY_NAME
+    public override fun getFriendlyName(): String = EdgeBridgeConstants.FRIENDLY_NAME
 
-    override fun getVersion(): String = EdgeBridgeConstants.EXTENSION_VERSION
+    public override fun getVersion(): String = EdgeBridgeConstants.EXTENSION_VERSION
 
-    override fun onRegistered() {
+    public override fun onRegistered() {
         api.registerEventListener(
             EventType.GENERIC_TRACK,
             EventSource.REQUEST_CONTENT,
@@ -275,7 +276,7 @@ internal class EdgeBridgeExtension(extensionApi: ExtensionApi) : Extension(exten
         // `mutableData` check is still required here because there can be properties outside of the
         // remapped ones that would cause this to still be a valid event
         if (mutableData.isEmpty() && extractedContextData.isNullOrEmpty() &&
-            actionValue.isNullOrEmpty() && stateValue.isNullOrEmpty()
+            StringUtils.isNullOrEmpty(actionValue) && StringUtils.isNullOrEmpty(stateValue)
         ) {
             return null
         }
@@ -286,7 +287,7 @@ internal class EdgeBridgeExtension(extensionApi: ExtensionApi) : Extension(exten
             val nonPrefixedData = mutableMapOf<String, Any>()
 
             contextData.forEach { (key, value) ->
-                if (key.isNullOrEmpty()) {
+                if (StringUtils.isNullOrEmpty(key)) {
                     Log.debug(
                         EdgeBridgeConstants.LOG_TAG,
                         LOG_SOURCE,
@@ -297,7 +298,7 @@ internal class EdgeBridgeExtension(extensionApi: ExtensionApi) : Extension(exten
 
                 if (key.startsWith(EdgeBridgeConstants.AnalyticsValues.PREFIX)) {
                     val newKey = key.substring(EdgeBridgeConstants.AnalyticsValues.PREFIX.length)
-                    if (newKey.isNullOrEmpty()) {
+                    if (StringUtils.isNullOrEmpty(newKey)) {
                         Log.debug(
                             EdgeBridgeConstants.LOG_TAG,
                             LOG_SOURCE,
@@ -321,14 +322,14 @@ internal class EdgeBridgeExtension(extensionApi: ExtensionApi) : Extension(exten
         }
 
         // Process action
-        if (!actionValue.isNullOrEmpty()) {
+        if (!StringUtils.isNullOrEmpty(actionValue)) {
             analyticsData[EdgeBridgeConstants.AnalyticsKeys.LINK_NAME] = actionValue
             analyticsData[EdgeBridgeConstants.AnalyticsKeys.LINK_TYPE] =
                 EdgeBridgeConstants.AnalyticsValues.OTHER
         }
 
         // Process state
-        if (!stateValue.isNullOrEmpty()) {
+        if (!StringUtils.isNullOrEmpty(stateValue)) {
             analyticsData[EdgeBridgeConstants.AnalyticsKeys.PAGE_NAME] = stateValue
         }
 
@@ -376,7 +377,7 @@ internal class EdgeBridgeExtension(extensionApi: ExtensionApi) : Extension(exten
         // triggers an early exit here; if other metrics are added later, this early exit logic should
         // be updated accordingly.
         val appId = EdgeBridgeProperties.getApplicationIdentifier()
-        if (appId.isNullOrEmpty()) {
+        if (StringUtils.isNullOrEmpty(appId)) {
             return
         }
 
@@ -391,6 +392,6 @@ internal class EdgeBridgeExtension(extensionApi: ExtensionApi) : Extension(exten
             analyticsData[EdgeBridgeConstants.AnalyticsKeys.CONTEXT_DATA] = contextDataMap
         }
 
-        contextDataMap[EdgeBridgeConstants.AnalyticsKeys.APPLICATION_IDENTIFIER] = appId
+        contextDataMap[EdgeBridgeConstants.AnalyticsKeys.APPLICATION_IDENTIFIER] = appId!!
     }
 }
