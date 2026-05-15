@@ -106,29 +106,29 @@ class EdgeBridgeFunctionalTests {
 
         val expected =
             "{" +
-            "  \"events\": [" +
-            "    {" +
-            "      \"xdm\": {" +
-            "        \"eventType\": \"analytics.track\"," +
-            "        \"timestamp\": \"STRING_TYPE\"," +
-            "        \"_id\": \"STRING_TYPE\"" +
-            "      }," +
-            "      \"data\": {" +
-            "        \"__adobe\": {" +
-            "          \"analytics\": {" +
-            "            \"cp\": \"foreground\"," +
-            "            \"pageName\": \"state name\"," +
-            "            \"c1\": \"propValue1\"," +
-            "            \"contextData\": {" +
-            "              \"key1\": \"value1\"," +
-            "              \"a.AppID\": \"com.adobe.marketing.mobile.edge.bridge.test\"" +
-            "            }" +
-            "          }" +
-            "        }" +
-            "      }" +
-            "    }" +
-            "  ]" +
-            "}"
+                "  \"events\": [" +
+                "    {" +
+                "      \"xdm\": {" +
+                "        \"eventType\": \"analytics.track\"," +
+                "        \"timestamp\": \"STRING_TYPE\"," +
+                "        \"_id\": \"STRING_TYPE\"" +
+                "      }," +
+                "      \"data\": {" +
+                "        \"__adobe\": {" +
+                "          \"analytics\": {" +
+                "            \"cp\": \"foreground\"," +
+                "            \"pageName\": \"state name\"," +
+                "            \"c1\": \"propValue1\"," +
+                "            \"contextData\": {" +
+                "              \"key1\": \"value1\"," +
+                "              \"a.AppID\": \"com.adobe.marketing.mobile.edge.bridge.test\"" +
+                "            }" +
+                "          }" +
+                "        }" +
+                "      }" +
+                "    }" +
+                "  ]" +
+                "}"
 
         assertExactMatch(
             expected,
@@ -160,30 +160,30 @@ class EdgeBridgeFunctionalTests {
 
         val expected =
             "{" +
-            "\"events\": [" +
-            "    {" +
-            "        \"xdm\": {" +
-            "            \"eventType\": \"analytics.track\"," +
-            "            \"timestamp\": \"STRING_TYPE\"," +
-            "            \"_id\": \"STRING_TYPE\"" +
-            "        }," +
-            "        \"data\": {" +
-            "            \"__adobe\": {" +
-            "                \"analytics\": {" +
-            "                    \"cp\": \"foreground\"," +
-            "                    \"linkName\": \"action name\"," +
-            "                    \"linkType\": \"other\"," +
-            "                    \"c1\": \"propValue1\"," +
-            "                    \"contextData\": {" +
-            "                        \"key1\": \"value1\"," +
-            "                        \"a.AppID\": \"com.adobe.marketing.mobile.edge.bridge.test\"" +
-            "                    }" +
-            "                }" +
-            "            }" +
-            "        }" +
-            "    }" +
-            "]" +
-            "}"
+                "\"events\": [" +
+                "    {" +
+                "        \"xdm\": {" +
+                "            \"eventType\": \"analytics.track\"," +
+                "            \"timestamp\": \"STRING_TYPE\"," +
+                "            \"_id\": \"STRING_TYPE\"" +
+                "        }," +
+                "        \"data\": {" +
+                "            \"__adobe\": {" +
+                "                \"analytics\": {" +
+                "                    \"cp\": \"foreground\"," +
+                "                    \"linkName\": \"action name\"," +
+                "                    \"linkType\": \"other\"," +
+                "                    \"c1\": \"propValue1\"," +
+                "                    \"contextData\": {" +
+                "                        \"key1\": \"value1\"," +
+                "                        \"a.AppID\": \"com.adobe.marketing.mobile.edge.bridge.test\"" +
+                "                    }" +
+                "                }" +
+                "            }" +
+                "        }" +
+                "    }" +
+                "]" +
+                "}"
 
         assertExactMatch(
             expected,
@@ -220,31 +220,31 @@ class EdgeBridgeFunctionalTests {
 
         val expected =
             "{" +
-            "\"events\": [" +
-            "    {" +
-            "        \"xdm\": {" +
-            "            \"eventType\": \"analytics.track\"," +
-            "            \"timestamp\": \"STRING_TYPE\"," +
-            "            \"_id\": \"STRING_TYPE\"" +
-            "        }," +
-            "        \"data\": {" +
-            "            \"__adobe\": {" +
-            "                \"analytics\": {" +
-            "                    \"cp\": \"foreground\"," +
-            "                    \"linkName\": \"Rule Action\"," +
-            "                    \"linkType\": \"other\"," +
-            "                    \"pageName\": \"Rule State\"," +
-            "                    \"contextData\": {" +
-            // Data is defined in the rule, not from the dispatched PII event
-            "                        \"testKey\": \"testValue\"," +
-            "                        \"a.AppID\": \"com.adobe.marketing.mobile.edge.bridge.test\"" +
-            "                    }" +
-            "                }" +
-            "            }" +
-            "        }" +
-            "    }" +
-            "]" +
-            "}"
+                "\"events\": [" +
+                "    {" +
+                "        \"xdm\": {" +
+                "            \"eventType\": \"analytics.track\"," +
+                "            \"timestamp\": \"STRING_TYPE\"," +
+                "            \"_id\": \"STRING_TYPE\"" +
+                "        }," +
+                "        \"data\": {" +
+                "            \"__adobe\": {" +
+                "                \"analytics\": {" +
+                "                    \"cp\": \"foreground\"," +
+                "                    \"linkName\": \"Rule Action\"," +
+                "                    \"linkType\": \"other\"," +
+                "                    \"pageName\": \"Rule State\"," +
+                "                    \"contextData\": {" +
+                // Data is defined in the rule, not from the dispatched PII event
+                "                        \"testKey\": \"testValue\"," +
+                "                        \"a.AppID\": \"com.adobe.marketing.mobile.edge.bridge.test\"" +
+                "                    }" +
+                "                }" +
+                "            }" +
+                "        }" +
+                "    }" +
+                "]" +
+                "}"
 
         assertExactMatch(
             expected,
