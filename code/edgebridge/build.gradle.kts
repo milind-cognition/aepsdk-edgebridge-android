@@ -11,6 +11,7 @@
  */
 plugins {
     id("aep-library")
+    id("org.jetbrains.kotlin.android")
 }
 
 val mavenCoreVersion: String by project
