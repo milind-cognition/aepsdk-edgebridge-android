@@ -1,0 +1,72 @@
+/*
+  Copyright 2022 Adobe. All rights reserved.
+  This file is licensed to you under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License. You may obtain a copy
+  of the License at http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software distributed under
+  the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+  OF ANY KIND, either express or implied. See the License for the specific language
+  governing permissions and limitations under the License.
+*/
+
+package com.adobe.marketing.mobile.tutorial
+
+import android.app.Application
+/* Edge Bridge tutorial - code section (1/2)
+import com.adobe.marketing.mobile.edge.bridge.EdgeBridge
+// Edge Bridge tutorial - code section (1/2) */
+
+//* Edge Bridge tutorial - remove section (1/2)
+import com.adobe.marketing.mobile.Analytics
+// Edge Bridge tutorial - remove section (1/2) */
+import com.adobe.marketing.mobile.Assurance
+import com.adobe.marketing.mobile.Edge
+import com.adobe.marketing.mobile.Extension
+import com.adobe.marketing.mobile.Lifecycle
+import com.adobe.marketing.mobile.LoggingMode
+import com.adobe.marketing.mobile.MobileCore
+import com.adobe.marketing.mobile.edge.consent.Consent
+import com.adobe.marketing.mobile.edge.identity.Identity
+import com.adobe.marketing.mobile.services.Log
+
+class MainApp : Application() {
+
+    companion object {
+        const val LOG_TAG = "EdgeBridgeTutorialApp"
+        private const val LOG_SOURCE = "MainApp"
+    }
+
+    // TODO: Set the Environment File ID from your mobile property configured in Data Collection UI
+    private val ENVIRONMENT_FILE_ID = ""
+
+    override fun onCreate() {
+        super.onCreate()
+
+        MobileCore.setApplication(this)
+        MobileCore.setLogLevel(LoggingMode.VERBOSE)
+
+        MobileCore.configureWithAppID(ENVIRONMENT_FILE_ID)
+
+        val extensions = mutableListOf<Class<out Extension>>(
+            Assurance.EXTENSION,
+            Consent.EXTENSION,
+            Edge.EXTENSION,
+            Identity.EXTENSION, // Identity for Edge Network
+            Lifecycle.EXTENSION
+        )
+
+        /* Edge Bridge tutorial - code section (2/2)
+        extensions.add(EdgeBridge.EXTENSION)
+        // Edge Bridge tutorial - code section (2/2) */
+
+        //* Edge Bridge tutorial - remove section (2/2)
+        extensions.add(com.adobe.marketing.mobile.Identity.EXTENSION)
+        extensions.add(Analytics.EXTENSION)
+        // Edge Bridge tutorial - remove section (2/2) */
+
+        // Register Adobe Experience Platform extensions
+        MobileCore.registerExtensions(extensions) {
+            Log.debug(LOG_TAG, LOG_SOURCE, "Adobe Experience Platform Mobile SDK initialized.")
+        }
+    }
+}
